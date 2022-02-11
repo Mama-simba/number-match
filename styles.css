@@ -124,3 +124,24 @@ html {
          padding-right: 3rem;
      }
  }
+
+
+
+
+footer {
+  text-align: center;
+  margin: 2rem 0;
+  font-size: 12px;
+  font-family: "Source Code Pro", monospace;
+}
+
+footer a {
+  text-decoration: none;
+  color: #000000;
+  text-shadow: -1px 1px 2px rgba(0, 0, 0, 0.6);
+  padding-right: 4px;
+}
+
+footer a:hover {
+  color: lightgray;
+}
