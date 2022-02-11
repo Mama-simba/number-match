@@ -8,30 +8,17 @@ html {
   box-sizing: border-box;
   font-size: 10px;
   color: #212560;
+  font-family: 'Play', sans-serif;
+  
+/*
+  background-image: url(./back1.jpg);
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center;*/
+  
+  
+  
 }
-
-
-#game-area {
-    font-size: 1.6rem;
-    padding-top: 2rem;
-
-    width: 90%;
-    margin: 0 auto;
-}
-
-.imageArea,
- .stats {
-     min-height: 30vh;
- }
-
- .imageArea {
-     background: linear-gradient(70deg, #859ede, #6965de);
-     border-radius: 0 0 3rem 3rem;
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     padding: 3rem;
- }
 
  h1 {
      margin-top: 0;
@@ -43,9 +30,6 @@ html {
      font-size: 2rem;
  }
 
- .items {
-     font-size: 2rem;
- }
 
  button {
      width: 8rem;
@@ -62,8 +46,18 @@ html {
      border: 2px solid rgb(241, 152, 152);
  }
 
- .stats{
-     background: whitesmoke;
+/* GAME AREA */
+
+
+#game-area {
+    font-size: 1.6rem;
+    padding-top: 2rem;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.stats{
+     /*background: whitesmoke;*/
      border: 2px solid #859ede;
      border-radius: 3rem 3rem 0 0;
      display: flex;
@@ -73,14 +67,40 @@ html {
      text-align: center;
  }
 
+.items {
+     font-size: 2rem;
+ }
+
+
+/* IMAGE AREA & RULES */
+
+.imageArea,
+ .stats {
+     min-height: 30vh;
+ }
+
+ .imageArea {
+     background: linear-gradient(70deg, #859ede, #6965de);
+     border-radius: 0 0 3rem 3rem;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     padding: 3rem;
+ }
+
+
+
  .space-y {
-     margin: 3rem 0;
+     margin: 1rem 0;
  }
 
  img {
      width: 100%;
      border-radius: 3rem;
  }
+
+
+ /* MOBILE DESIGN */
 
  @media all and (min-width: 600px){
      #game-area {
