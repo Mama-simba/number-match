@@ -98,6 +98,12 @@ const setImageSrc = (randomImageName) => {
     imageContainer.appendChild(image);
 }
 
+//Variables to check if user's answer is true and update score. We need to update ther values
+let currentImageValue = 0;
+let displayNumber = 0;
+let score= 0;
+let totalAvailable = images.length; //total of images in the array
+
 // Generates a random number, positive or negative
 const generatePlusOrMinus = () => {
     const number0to1 = Math.floor(Math.random() * 2);
@@ -110,17 +116,28 @@ generateDisplayNumber = (numberOfItems, plusOrMinus) => {
     if (split === 0){
         //displays the real number
         document.getElementById("number").innerHTML = numberOfItems;
+        displayNumber = numberOfItems;
     } else {
         //displays one number higher or lower than the correct number of Items
         document.getElementById("number").innerHTML = 
         `${numberOfItems + plusOrMinus}`;
+        displayNumber = numberOfItems + plusOrMinus;
     }
+
+    //Updated value
+    currentImageValue = numberOfItems;
+
+    
 }
 
 const setImageName = (randomImageName) => {
     const imageName = randomImageName.slice(0,randomImageName.length - 4);
     document.getElementById("item-name").innerHTML = imageName + "?";
 }
+
+
+
+
 
 
 const generate = () => {
@@ -139,12 +156,23 @@ const generate = () => {
     images.splice(randomNumber, 1);
 
 
-    //After showing 20 images, it will stop
+    //After showing 20 images, it will stop and will show a message at the end of the game
     if (images.length === 0){
+        endOfGame();
         stopTimer();
         return;
     }
+}
 
+const match = () => {
+  //Checks if currentImageValue matches the displayNumber & updates the score
+  currentImageValue === displayNumber ? score++ : score--;
+  document.getElementById("currentScore").innerHTML = score;
+}
+
+const nomatch = () => {
+  currentImageValue !== displayNumber ? score++ : score--;
+  document.getElementById("currentScore").innerHTML = score;
 }
 
 
@@ -155,9 +183,24 @@ const timer = () => {
 }
 
 const play = () => {
+  document.getElementById("message").style.display = "none"; //hides the welcome message
+  document.getElementById("startScreen").style.display = "none"; //hides the start screen
+  document.getElementById("play-button").style.display = "none"; //hides the play button
+
     generate();
     timer();
 }
+
+const endOfGame = () => {
+    document.getElementById("message").style.display = "block"; //shows message at the end of the game
+    document.getElementById("imageContainer").style.display = "none"; //hides last image
+    document.getElementById("message").innerHTML = `Game over, your score is ${score} / ${totalAvailable}`; //shows total score
+    document.getElementById("statsContent").style.display = "none"; //hides the left side score
+
+
+    setTimeout(() => location.reload(), 3000);
+} 
+
 
 
 const stopTimer = () => {
