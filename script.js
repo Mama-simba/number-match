@@ -103,6 +103,14 @@ let currentImageValue = 0;
 let displayNumber = 0;
 let score= 0;
 let totalAvailable = images.length; //total of images in the array
+let chosen = false;
+
+document.getElementById("statsContent").style.visibility = "hidden"; // hides the score section till the game starts
+document.getElementById("currentScore").innerHTML = score; // shows current score
+document.getElementById("totalAvailable").innerHTML = totalAvailable; // shows total number of images in the score
+
+
+
 
 // Generates a random number, positive or negative
 const generatePlusOrMinus = () => {
@@ -126,8 +134,6 @@ generateDisplayNumber = (numberOfItems, plusOrMinus) => {
 
     //Updated value
     currentImageValue = numberOfItems;
-
-    
 }
 
 const setImageName = (randomImageName) => {
@@ -137,10 +143,16 @@ const setImageName = (randomImageName) => {
 
 
 
-
-
-
 const generate = () => {
+
+  //After showing 20 images, it will stop and will show a message at the end of the game
+    if (images.length === 0){
+        endOfGame();
+        stopTimer();
+        return;
+    }
+
+    chosen = false;
 
     const randomNumber = Math.floor(Math.random() * images.length); // Generate a random number and apply it to the images array
     const randomImageName = images[randomNumber].image_name;
@@ -156,23 +168,24 @@ const generate = () => {
     images.splice(randomNumber, 1);
 
 
-    //After showing 20 images, it will stop and will show a message at the end of the game
-    if (images.length === 0){
-        endOfGame();
-        stopTimer();
-        return;
-    }
+    
 }
 
 const match = () => {
-  //Checks if currentImageValue matches the displayNumber & updates the score
-  currentImageValue === displayNumber ? score++ : score--;
-  document.getElementById("currentScore").innerHTML = score;
+  if (!chosen) {
+    //Checks if currentImageValue matches the displayNumber & updates the score
+    currentImageValue === displayNumber ? score++ : score--;
+    chosen = true;
+    document.getElementById("currentScore").innerHTML = score;
+  }
 }
 
 const nomatch = () => {
-  currentImageValue !== displayNumber ? score++ : score--;
-  document.getElementById("currentScore").innerHTML = score;
+  if (!chosen){
+    currentImageValue !== displayNumber ? score++ : score--;
+    chosen = true;
+    document.getElementById("currentScore").innerHTML = score;
+  }
 }
 
 
@@ -186,6 +199,8 @@ const play = () => {
   document.getElementById("message").style.display = "none"; //hides the welcome message
   document.getElementById("startScreen").style.display = "none"; //hides the start screen
   document.getElementById("play-button").style.display = "none"; //hides the play button
+  document.getElementById("statsContent").style.visibility = "visible"; //shows the score section when game starts
+
 
     generate();
     timer();
@@ -196,6 +211,7 @@ const endOfGame = () => {
     document.getElementById("imageContainer").style.display = "none"; //hides last image
     document.getElementById("message").innerHTML = `Game over, your score is ${score} / ${totalAvailable}`; //shows total score
     document.getElementById("statsContent").style.display = "none"; //hides the left side score
+    document.getElementById("statsContent").style.visibility = "hidden"; //hides the score section when game ends
 
 
     setTimeout(() => location.reload(), 3000);
