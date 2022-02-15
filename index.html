@@ -10,6 +10,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/c8859f7b0c.js" crossorigin="anonymous"></script>
     </head>
 
     <body>
@@ -25,8 +26,8 @@
                         <span id="number"></span> <span id="item-name"></span>
                     </p>
                     <div class="match-buttons">
-                        <button onclick="match()">&#10003;</button>
-                        <button onclick="nomatch()">&#10007;</button>
+                        <button class="match" onclick="match()">&#10003;</button>
+                        <button class="nomatch" onclick="nomatch()">&#10007;</button>
                     </div>
                 </div>
             </div>
@@ -45,14 +46,13 @@
                     <p class="space-y">
                         You have <span id="timeSetting">3</span> seconds to decide.
                     </p>
-                    <button id="play-button" onclick="play()">Play!</button>
+                    <button id="play-button" class="play" onclick="play()">Play!</button>
                 </div>
                 
                 <div id="imageContainer"></div>
             </div>
 
-
-
+            
         </main>
 
         <footer>
@@ -60,6 +60,11 @@
             <a href="https://www.cristina-padilla.com/" target="_blank"><strong>Cristina Padilla</strong></a><a
                 href="https://github.com/Mama-simba/number-match" target="_blank"><i class="fab fa-github-square"></i></a>
         </footer>
+
+        
+       
+
+        
 
 
         <script src="./script.js"></script>

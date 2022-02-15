@@ -7,69 +7,95 @@
 html {
   box-sizing: border-box;
   font-size: 10px;
-  color: #212560;
+  color: white;
+  text-shadow: 4px 4px 2px rgba(0,0,0,0.2);
   font-family: 'Play', sans-serif;
-  
-/*
-  background-image: url(./back1.jpg);
-  background-size:cover;
-  background-repeat: no-repeat;
-  background-position: center;*/
-  
-  
-  
+  min-height: 100%;
 }
 
- h1 {
-     margin-top: 0;
-     font-size: 2.4rem;
- }
-
- h3 {
-     margin-top: 0;
-     font-size: 2rem;
- }
-
-
- button {
-     width: 8rem;
-     border: none;
-     border-radius: 3rem;
-     padding: 1rem;
-     margin: 1.5rem 0;
-     background: transparent;
-     border: 2px solid #a1e0e4;
-     cursor: pointer;
- }
-
- button:nth-child(2){
-     border: 2px solid rgb(241, 152, 152);
- }
-
-/* GAME AREA */
+body {
+  background-image: url(./back3.jpg);
+  background-size: cover;
+  -moz-background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
 
 #game-area {
     font-size: 1.6rem;
-    padding-top: 2rem;
-    width: 90%;
-    margin: 0 auto;
+    width: 60%;
+    margin: 0 2rem 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
+/* BUTTONS */
+
+.play,
+.match,
+.nomatch {
+    width: 8rem;
+    border: none;
+    border-radius: 3rem;
+    padding: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 4px 4px 2px rgba(252, 250, 250, 0.2);
+ }
+
+.play {
+    margin-top: 3rem;
+    background: #FFE162;
+    color: #FF6464; 
+    
+} 
+
+.play:hover {
+    background: #FF6464;
+    color: #FFE162; 
+
+} 
+
+.match {
+    margin: 1rem;
+    background: #357C3C;
+    color: #8BDB81;
+}
+
+.nomatch {
+    margin: 1rem;
+    background: #CD1818;
+    color: #FFA1C9;
+}
+
+.match:hover, .nomatch:hover {
+    border: 2px solid white;
+   
+}
+
+
+
+/* SCORE AREA */
+
+
 .stats{
-     /*background: whitesmoke;*/
-     border: 2px solid #859ede;
-     border-radius: 3rem 3rem 0 0;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     padding: 3rem 0;
-     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+ }
+
+  h3 {
+     font-size: 2rem;
  }
 
 .items {
      font-size: 2rem;
+     padding: 0.5rem 0;
  }
+
+
 
 
 /* IMAGE AREA & RULES */
@@ -80,23 +106,30 @@ html {
  }
 
  .imageArea {
-     background: linear-gradient(70deg, #859ede, #6965de);
-     border-radius: 0 0 3rem 3rem;
      display: flex;
      flex-direction: column;
      justify-content: center;
-     padding: 3rem;
+     align-items: center;
+     
  }
 
+h1 {
+    margin-bottom: 2rem;
+    font-size: 2.4rem;
+}
 
-
- .space-y {
-     margin: 1rem 0;
+ .space-y{
+     margin-top: 1rem;
  }
 
  img {
      width: 100%;
-     border-radius: 3rem;
+     
+     border:solid #fff;  
+        border-width:6px 6px 30px 6px;  
+        box-shadow:1px 1px 5px #333; 
+        -webkit-box-shadow:1px 1px 5px #333;  
+        -moz-box-shadow:1px 1px 5px #333;  
  }
 
  .fade {
@@ -114,39 +147,31 @@ html {
  }
 
 
- /* MOBILE DESIGN */
+ /* MOBILE */
 
- @media all and (min-width: 600px){
+ @media all and (max-width: 600px){
+
      #game-area {
-         display: flex;
-     }
+        width: 75%;     
+        margin: 1rem 2rem 0 auto;    
+    }
 
-     .imageArea, .stats {
-         min-height: 50vh;
-     } 
+   
 
-     .imageArea {
-         border-radius: 3rem;
-         transform: translate(-3rem);
-         flex: 2;
-     }
 
-     .stats {
-         flex: 1;
-         border-radius: 3rem 0 0 3rem;
-         margin-left: 3rem;
-         padding-right: 3rem;
-     }
+
  }
 
 
 
 
 footer {
-  text-align: center;
-  margin: 2rem 0;
-  font-size: 12px;
+  width: 100%;
+  margin: 15rem auto 4rem auto;
+  font-size: 14px;
   font-family: "Source Code Pro", monospace;
+  text-align: center;
+  padding-left: 2rem;
 }
 
 footer a {
@@ -154,8 +179,9 @@ footer a {
   color: #000000;
   text-shadow: -1px 1px 2px rgba(0, 0, 0, 0.6);
   padding-right: 4px;
+  
 }
 
 footer a:hover {
-  color: lightgray;
+  color: #FFE162;
 }
