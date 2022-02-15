@@ -94,7 +94,7 @@ const setImageSrc = (randomImageName) => {
     //Creates an image element in the DOM and add it in the HTML image container
     const image = document.createElement('img');
     image.src = `images/${randomImageName}`;
-
+    image.classList.add("fade");
     imageContainer.appendChild(image);
 }
 
@@ -144,7 +144,6 @@ const setImageName = (randomImageName) => {
 
 
 const generate = () => {
-
   //After showing 20 images, it will stop and will show a message at the end of the game
     if (images.length === 0){
         endOfGame();
@@ -166,9 +165,6 @@ const generate = () => {
 
     //Removes the images (from the array) that were already displayed
     images.splice(randomNumber, 1);
-
-
-    
 }
 
 const match = () => {
